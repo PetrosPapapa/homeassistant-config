@@ -1,0 +1,115 @@
+- id: '1596988062694'
+  alias: Main Door Notification
+  description: ''
+  trigger:
+  - device_id: 63b1fe5838054a5888436f1efd7abe24
+    domain: binary_sensor
+    entity_id: binary_sensor.openclose_5
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+    platform: device
+    type: opened
+  - device_id: 63b1fe5838054a5888436f1efd7abe24
+    domain: binary_sensor
+    entity_id: binary_sensor.openclose_5
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+    platform: device
+    type: not_opened
+  condition: []
+  action:
+  - data:
+      data:
+        clickAction: lovelace/default_view
+      message: "{% if is_state('binary_sensor.openclose_5','on') %}\n  [{{ now().strftime(\"\
+        %a %H:%M:%S\") }}] The Main Door has been OPENED\n{% else %}\n  [{{ now().strftime(\"\
+        %a %H:%M:%S\") }}] The Main Door has been closed\n{% endif %}\n"
+      title: Door Sensor Triggered
+    service: notify.all_phones
+  mode: single
+- id: '1601311824964'
+  alias: Sun SET
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.foscam_night
+  - scene: scene.sunset
+  mode: single
+- id: '1601311824965'
+  alias: TV OFF after 22:30
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.sony_bravia_tv
+    from: 'on'
+    to: 'off'
+    for: 00:15:00
+  - platform: time
+    at: '22:31:00'
+  condition:
+  - condition: device
+    device_id: c3a2ba4501bb11ebafea19648fe90737
+    domain: media_player
+    entity_id: media_player.sony_bravia_tv
+    type: is_off
+  - condition: time
+    after: '22:30:00'
+    before: '12:00:00'
+  action:
+  - service: light.turn_off
+    entity_id: light.living_room_lights
+    data:
+      transition: 5
+  mode: single
+- id: '1602538103112'
+  alias: Sun RISE
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.foscam_night
+  - scene: scene.sunrise
+  mode: single
+- id: '1608040164604'
+  alias: ' Christmas Lights - ON'
+  description: ''
+  trigger:
+  - device_id: cd74434f5c681970a61cd3fe1304269a
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - service: light.turn_on
+    data: {}
+    entity_id: light.christmas_lights
+  mode: single
+- id: '1608040164605'
+  alias: Christmas Lights - OFF
+  description: ''
+  trigger:
+  - device_id: cd74434f5c681970a61cd3fe1304269a
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_off
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id: light.christmas_lights
+  mode: single

@@ -1,0 +1,118 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Redirect output to Synology NAS Maria DB
+recorder:
+    db_url: !secret recorder_db_url
+
+discovery:
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: hass
+  username: hass
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+  tags_attributes:
+    - "friendly_name"
+    - "area"
+    - "device_class"
+    
+#camera: # use Synology integration instead
+#  - platform: synology
+#    url: https://192.168.0.155:5001
+#    username: !secret synology_username
+#    password: !secret synology_password
+#    timeout: 15
+#    verify_ssl: false
+
+rest_command:
+#  surveillance_home_mode_on: # USE switch instead
+#    url: !secret surveillance_home_mode_on_url
+#    verify_ssl: false
+#  surveillance_home_mode_off:
+#    url: !secret surveillance_home_mode_off_url
+#    verify_ssl: false
+  foscam_infra_on:
+    url: !secret foscam_infra_on_url
+    verify_ssl: false
+  foscam_infra_off:
+    url: !secret foscam_infra_off_url
+    verify_ssl: false
+    
+light:
+  - platform: group
+    name: Living Room Lights
+    entities:
+        - light.dimmable_light_2
+        - light.color_temperature_light_4
+  - platform: group
+    name: Kitchen Lights
+    entities:
+        - light.color_temperature_light_3
+  - platform: group
+    name: Baby Lights
+    entities:
+        - light.color_temperature_light_8
+  - platform: switch
+    name: plug_5
+    entity_id:
+        - switch.on_off_plug_in_unit_5
+  - platform: switch
+    name: plug_6
+    entity_id:
+        - switch.on_off_plug_in_unit_6
+  - platform: switch
+    name: plug_7
+    entity_id:
+        - switch.on_off_plug_in_unit_7
+  - platform: group
+    name: Christmas Lights
+    entities:
+        - light.plug_5
+        - light.plug_6
+        
+homeassistant:
+    customize:
+        light.living_room_lights:
+            friendly_name: "Living Room Lights"
+            icon: mdi:lamps
+        light.baby_lights:
+            friendly_name: "Baby Lights"
+            icon: mdi:human-baby-changing-table
+        light.christmas_lights:
+            friendly_name: "Christmas Lights"
+            icon: mdi:string-lights
+            
+notify:
+  - platform: group
+    name: all_phones
+    services:
+      - service: mobile_app_1_7pro
+      - service: mobile_app_oneplus_a5010
+    
+switch:
+  - platform: template
+    switches:
+      foscam_night:
+        availability_template: "{{ not is_state('camera.kane_nas_foscam_r2m', 'unavailable') }}"
+        turn_on:
+          service: rest_command.foscam_infra_on
+        turn_off:
+          service: rest_command.foscam_infra_off
