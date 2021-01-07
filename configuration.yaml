@@ -62,6 +62,7 @@ light:
     entities:
         - light.dimmable_light_2
         - light.color_temperature_light_4
+        - light.dimmable_light_9
   - platform: group
     name: Kitchen Lights
     entities:
@@ -116,3 +117,11 @@ switch:
           service: rest_command.foscam_infra_on
         turn_off:
           service: rest_command.foscam_infra_off
+
+media_player:
+  - platform: braviatv_psk
+    host: 192.168.0.153
+    psk: !secret sony_bravia_psk
+    android: True
+    user_labels: True
+    name: SonyTV

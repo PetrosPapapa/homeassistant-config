@@ -1,0 +1,13 @@
+---
+hello_world:
+  module: hello
+  class: HelloWorld
+
+living_room_controller:
+  module: controllerx
+  class: E1810Controller
+  controller: tradfri_remote_control
+  integration: deconz
+  light: light.living_room_lights
+
+
