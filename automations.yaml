@@ -43,9 +43,10 @@
     data: {}
     entity_id: switch.foscam_night
   - scene: scene.sunset
+  - scene: scene.baby_sleep_time
   mode: single
 - id: '1601311824965'
-  alias: TV OFF after 22:30
+  alias: TV OFF after 21:30
   description: ''
   trigger:
   - platform: state
@@ -54,7 +55,7 @@
     to: 'off'
     for: 00:15:00
   - platform: time
-    at: '22:31:00'
+    at: '21:31:00'
   condition:
   - condition: device
     device_id: c3a2ba4501bb11ebafea19648fe90737
@@ -62,7 +63,7 @@
     entity_id: media_player.sony_bravia_tv
     type: is_off
   - condition: time
-    after: '22:30:00'
+    after: '21:30:00'
     before: '12:00:00'
   action:
   - service: light.turn_off
@@ -84,7 +85,7 @@
   - scene: scene.sunrise
   mode: single
 - id: '1608040164604'
-  alias: ' Christmas Lights - ON'
+  alias: Christmas Lights - ON
   description: ''
   trigger:
   - device_id: cd74434f5c681970a61cd3fe1304269a
@@ -112,4 +113,66 @@
   - service: light.turn_off
     data: {}
     entity_id: light.christmas_lights
+  mode: single
+- id: '1608040164606'
+  alias: Petros Bedside - ON
+  description: ''
+  trigger:
+  - device_id: cd74434f5c681970a61cd3fe1304269a
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - service: light.turn_on
+    data: {}
+    entity_id: light.petros_bedside
+  mode: single
+- id: '1608040164607'
+  alias: Petros Bedside - OFF
+  description: ''
+  trigger:
+  - device_id: cd74434f5c681970a61cd3fe1304269a
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_off
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id: light.petros_bedside
+  mode: single
+- id: '1617215895252'
+  alias: Night Camera On at 7pm
+  description: ''
+  trigger:
+  - platform: time
+    at: '19:00:00'
+  condition: []
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.foscam_night
+  mode: single
+- id: '1617223544984'
+  alias: Night Camera Off on Sunrise or 6:45am
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+  - platform: time
+    at: 06:45:00
+  condition:
+  - condition: sun
+    before: sunset
+    after: sunrise
+  - condition: time
+    after: 06:44:00
+    before: '18:59:00'
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.foscam_night
   mode: single

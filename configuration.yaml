@@ -72,25 +72,25 @@ light:
     entities:
         - light.color_temperature_light_8
   - platform: switch
-    name: plug_5
+    name: Petros Bedside
     entity_id:
         - switch.on_off_plug_in_unit_5
   - platform: switch
-    name: plug_6
+    name: Router Plug
     entity_id:
         - switch.on_off_plug_in_unit_6
   - platform: switch
-    name: plug_7
+    name: Foscam Plug
     entity_id:
         - switch.on_off_plug_in_unit_7
-  - platform: group
-    name: Christmas Lights
-    entities:
-        - light.plug_5
-        - light.plug_6
+#  - platform: group
+#    name: Christmas Lights
+#    entities:
         
 homeassistant:
     customize:
+        binary_sensor.openclose_5:
+            device_class: door
         light.living_room_lights:
             friendly_name: "Living Room Lights"
             icon: mdi:lamps
@@ -100,8 +100,15 @@ homeassistant:
         light.christmas_lights:
             friendly_name: "Christmas Lights"
             icon: mdi:string-lights
-        binary_sensor.openclose_5:
-            device_class: door
+        light.petros_bedside:
+            friendly_name: "Petros Bedside Lamp"
+            icon: mdi:lamp
+        light.foscam_plug:
+            friendly_name: "Foscam Plug"
+            icon: mdi:power-socket-uk
+        light.router_plug:
+            friendly_name: "Router Plug"
+            icon: mdi:power-socket-uk
             
 notify:
   - platform: group

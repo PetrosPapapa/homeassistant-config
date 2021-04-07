@@ -1,17 +1,6 @@
 - id: '1608413152747'
   name: Sun SET
   entities:
-    light.baby_lights:
-      min_mireds: 140
-      max_mireds: 650
-      brightness: 128
-      color_temp: 502
-      entity_id:
-      - light.color_temperature_light_8
-      friendly_name: Baby Lights
-      icon: mdi:human-baby-changing-table
-      supported_features: 43
-      state: 'on'
     light.kitchen_lights:
       min_mireds: 140
       max_mireds: 650
@@ -35,19 +24,36 @@
       icon: mdi:lamps
       supported_features: 43
       state: 'on'
-  icon: mdi:weather-sunset-down
-- id: '1608413152748'
-  name: Sun RISE
-  entities:
     light.baby_lights:
       min_mireds: 140
       max_mireds: 650
+      brightness: 128
+      color_temp: 502
       entity_id:
       - light.color_temperature_light_8
       friendly_name: Baby Lights
       icon: mdi:human-baby-changing-table
       supported_features: 43
-      state: 'off'
+      state: 'on'      
+  icon: mdi:weather-sunset-down
+- id: '1608413152749'
+  name: Baby Sleep Time
+  entities:
+    light.baby_lights:
+      min_mireds: 140
+      max_mireds: 650
+      brightness: 128
+      color_temp: 502
+      entity_id:
+      - light.color_temperature_light_8
+      friendly_name: Baby Lights
+      icon: mdi:human-baby-changing-table
+      supported_features: 43
+      state: 'on'
+  icon: mdi:chat-sleep
+- id: '1608413152758'
+  name: Sun RISE
+  entities:
     light.kitchen_lights:
       min_mireds: 140
       max_mireds: 650
@@ -67,4 +73,26 @@
       icon: mdi:lamps
       supported_features: 43
       state: 'off'
+    light.baby_lights:
+      min_mireds: 140
+      max_mireds: 650
+      entity_id:
+      - light.color_temperature_light_8
+      friendly_name: Baby Lights
+      icon: mdi:human-baby-changing-table
+      supported_features: 43
+      state: 'off'      
   icon: mdi:weather-sunset-up
+- id: '1608413152759'
+  name: Baby Awake
+  entities:
+    light.baby_lights:
+      min_mireds: 140
+      max_mireds: 650
+      entity_id:
+      - light.color_temperature_light_8
+      friendly_name: Baby Lights
+      icon: mdi:human-baby-changing-table
+      supported_features: 43
+      state: 'off'
+  icon: mdi:baby-bottle
