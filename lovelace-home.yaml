@@ -1,0 +1,108 @@
+title: Home
+views:
+  - path: default_view
+    title: Home
+    badges:
+      - entity: binary_sensor.updater
+      - entity: person.petros
+      - entity: person.eliza
+      - entity: sensor.living_room_temperature
+      - entity: sensor.main_bedroom_temperature
+      - entity: sensor.vasiliki_bedroom_temperature
+      - entity: sensor.kitchen_temperature
+      - entity: sensor.bathroom_temperature
+      - entity: sensor.daylight
+      - entity: sun.sun
+      - entity: binary_sensor.openclose_5
+    cards:
+      - entity: binary_sensor.openclose_5
+        type: entity
+      - type: iframe
+        url: !secret grafana_temperatures_url
+        aspect_ratio: 100%
+      - entity: weather.home
+        type: weather-forecast
+      - type: vertical-stack
+        cards:
+          - type: light
+            entity: light.living_room_lights
+          - type: light
+            entity: light.kitchen_lights
+          - type: light
+            entity: light.baby_lights
+          - type: light
+            entity: light.petros_bedside
+      - type: iframe
+        url: !secret grafana_batteries_url
+        aspect_ratio: 100%
+      - type: media-control
+        entity: media_player.sonytv
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.kane_nas_foscam_r2m
+            image: 'https://demo.home-assistant.io/stub_config/bedroom.png'
+            camera_image: camera.kane_nas_foscam_r2m
+            hold_action:
+              action: call-service
+              service: switch.toggle
+              service_data:
+                entity_id: switch.foscam_night
+          - type: entities
+            entities:
+              - entity: switch.foscam_night
+                name: Night vision
+                secondary_info: last-changed
+                icon: 'mdi:camera-enhance'
+              - entity: light.foscam_plug
+                name: Camera plug
+          - type: picture-entity
+            entity: camera.kane_nas_d_link_dcs_932l
+            image: 'https://demo.home-assistant.io/stub_config/bedroom.png'
+            camera_image: camera.kane_nas_d_link_dcs_932l
+      - type: vertical-stack
+        cards:
+          - type: glance
+            entities:
+              - entity: sensor.1_7pro_battery_health
+              - entity: sensor.1_7pro_battery_level
+              - entity: sensor.1_7pro_battery_state
+              - entity: binary_sensor.1_7pro_is_charging
+              - entity: sensor.1_7pro_last_reboot
+              - entity: sensor.1_7pro_audio_sensor
+              - entity: sensor.1_7pro_do_not_disturb_sensor
+              - entity: sensor.1_7pro_storage_sensor
+              - entity: sensor.1_7pro_geocoded_location
+              - entity: sensor.1_7pro_light_sensor
+            show_name: false
+            state_color: true
+            title: 1+7Pro
+          - type: glance
+            entities:
+              - entity: sensor.oneplus_a5010_battery_health
+              - entity: sensor.oneplus_a5010_battery_level
+              - entity: sensor.oneplus_a5010_battery_state
+              - entity: binary_sensor.oneplus_a5010_is_charging
+              - entity: sensor.oneplus_a5010_last_reboot
+              - entity: sensor.oneplus_a5010_audio_mode
+              - entity: sensor.oneplus_a5010_do_not_disturb_sensor
+              - entity: sensor.oneplus_a5010_internal_storage
+              - entity: sensor.oneplus_a5010_geocoded_location
+              - entity: sensor.oneplus_a5010_light_sensor
+            show_name: false
+            state_color: true
+            title: 1+5T
+  - title: Lights
+    path: lights
+    panel: true
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: light.color_temperature_light_4
+          - entity: light.dimmable_light_2
+          - entity: light.dimmable_light_9
+          - entity: light.color_temperature_light_3
+          - entity: light.color_temperature_light_8
+          - entity: light.petros_bedside
+        title: Lights

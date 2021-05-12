@@ -134,3 +134,13 @@ media_player:
     android: True
     user_labels: True
     name: SonyTV
+    
+lovelace:
+  mode: yaml
+#  dashboards:
+#    lovelace-home:
+#      mode: yaml
+#      title: Home
+#      icon: mdi:home
+#      show_in_sidebar: true
+#      filename: lovelace-home.yaml    
