@@ -45,8 +45,20 @@
   - scene: scene.sunset
   - scene: scene.baby_sleep_time
   mode: single
-- id: '1601311824965'
-  alias: TV OFF after 21:30
+- id: '1601311824966'
+  alias: Sun SET Living Room
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition:
+  - condition: time
+    before: input_datetime.bed_time
+  action:
+  - scene: scene.sun_set_living_room
+  mode: single
+- id: '1601311825065'
+  alias: TV OFF after Bed time
   description: ''
   trigger:
   - platform: state
@@ -55,7 +67,7 @@
     to: 'off'
     for: 00:15:00
   - platform: time
-    at: '21:31:00'
+    at: input_datetime.bed_time
   condition:
   - condition: device
     device_id: c3a2ba4501bb11ebafea19648fe90737
@@ -63,7 +75,7 @@
     entity_id: media_player.sony_bravia_tv
     type: is_off
   - condition: time
-    after: '21:30:00'
+    after: input_datetime.bed_time
     before: '12:00:00'
   action:
   - service: light.turn_off

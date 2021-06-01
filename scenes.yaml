@@ -12,18 +12,6 @@
       icon: mdi:lightbulb-group
       supported_features: 43
       state: 'on'
-    light.living_room_lights:
-      min_mireds: 140
-      max_mireds: 650
-      brightness: 178
-      color_temp: 452
-      entity_id:
-      - light.dimmable_light_2
-      - light.color_temperature_light_4
-      friendly_name: Living Room Lights
-      icon: mdi:lamps
-      supported_features: 43
-      state: 'on'
     light.baby_lights:
       min_mireds: 140
       max_mireds: 650
@@ -36,6 +24,22 @@
       supported_features: 43
       state: 'on'      
   icon: mdi:weather-sunset-down
+- id: '1608413152848'
+  name: Sun SET Living Room
+  entities:
+    light.living_room_lights:
+      min_mireds: 140
+      max_mireds: 650
+      brightness: 178
+      color_temp: 452
+      entity_id:
+      - light.dimmable_light_2
+      - light.color_temperature_light_4
+      friendly_name: Living Room Lights
+      icon: mdi:lamps
+      supported_features: 43
+      state: 'on'
+  icon: mdi:weather-sunset-down  
 - id: '1608413152749'
   name: Baby Sleep Time
   entities:
