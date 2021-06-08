@@ -25,7 +25,7 @@ class TypeController(Controller, abc.ABC, Generic[EntityType]):
     entity: EntityType
     feature_support: FeatureSupport
 
-    async def initialize(self) -> None:
+    async def init(self) -> None:
         if self.entity_arg not in self.args:
             raise ValueError(
                 f"{self.__class__.__name__} class needs the `{self.entity_arg}` attribute"
@@ -36,7 +36,7 @@ class TypeController(Controller, abc.ABC, Generic[EntityType]):
         self.feature_support = FeatureSupport(
             self.entity.name, self, update_supported_features
         )
-        await super().initialize()
+        await super().init()
 
     @abc.abstractmethod
     def _get_entity_type(self) -> Type[Entity]:
@@ -53,8 +53,10 @@ class TypeController(Controller, abc.ABC, Generic[EntityType]):
             )
 
     async def check_domain(self, entity_name: str) -> None:
-        if entity_name.startswith("group."):
-            entities = await self.get_state(entity_name, attribute="entity_id")  # type: ignore
+        if self.contains_templating(entity_name):
+            return
+        elif entity_name.startswith("group."):
+            entities: List[str] = await self.get_state(entity_name, attribute="entity_id")  # type: ignore
             same_domain = all(
                 (
                     any(elem.startswith(domain + ".") for domain in self.domains)
@@ -76,7 +78,7 @@ class TypeController(Controller, abc.ABC, Generic[EntityType]):
         self, entity: str, attribute: Optional[str] = None
     ) -> Any:
         if entity.startswith("group."):
-            entities = await self.get_state(entity, attribute="entity_id")  # type: ignore
+            entities: List[str] = await self.get_state(entity, attribute="entity_id")  # type: ignore
             if len(entities) == 0:
                 raise ValueError(
                     f"The group `{entity}` does not have any entities registered."

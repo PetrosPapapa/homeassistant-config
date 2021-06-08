@@ -1,9 +1,15 @@
-from typing import Any, Awaitable, Callable, Dict, Tuple, Union
+from typing import Any, Awaitable, Callable, Dict, List, Tuple, Union
 
 ActionFunction = Callable[..., Awaitable[Any]]
-TypeAction = Union[ActionFunction, Tuple, str]
+ActionFunctionWithParams = Tuple[ActionFunction, Tuple[Any, ...]]
+TypeAction = Union[ActionFunction, ActionFunctionWithParams]
 ActionEvent = Union[str, int]
-TypeActionsMapping = Dict[ActionEvent, TypeAction]
+PredefinedActionsMapping = Dict[str, TypeAction]
+DefaultActionsMapping = Dict[ActionEvent, str]
+
+CustomAction = Union[str, Dict[str, Any]]
+CustomActions = Union[List[CustomAction], CustomAction]
+CustomActionsMapping = Dict[ActionEvent, CustomActions]
 
 
 class Light:
@@ -52,6 +58,8 @@ class Light:
     HOLD_XY_COLOR_UP = "hold_xycolor_up"
     HOLD_XY_COLOR_DOWN = "hold_xycolor_down"
     HOLD_XY_COLOR_TOGGLE = "hold_xycolor_toggle"
+    XYCOLOR_FROM_CONTROLLER = "xycolor_from_controller"
+    COLORTEMP_FROM_CONTROLLER = "colortemp_from_controller"
 
 
 class MediaPlayer:
@@ -67,6 +75,7 @@ class MediaPlayer:
     PREVIOUS_TRACK = "previous_track"
     NEXT_SOURCE = "next_source"
     PREVIOUS_SOURCE = "previous_source"
+    MUTE = "mute"
 
 
 class Switch:

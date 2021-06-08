@@ -1,15 +1,10 @@
-from cx_const import Light, TypeActionsMapping
+from cx_const import DefaultActionsMapping, Light
 from cx_core import LightController
 from cx_core.integration import EventData
 
 
 class HueDimmerController(LightController):
-    # Different states reported from the controller:
-    # on-press, on-hold, on-hold-release, up-press, up-hold,
-    # up-hold-release, down-press, down-hold, down-hold-release,
-    # off-press, off-hold, off-hold-release
-
-    def get_z2m_actions_mapping(self) -> TypeActionsMapping:
+    def get_z2m_actions_mapping(self) -> DefaultActionsMapping:
         return {
             "on-press": Light.ON,
             "on-hold": Light.HOLD_COLOR_UP,
@@ -25,7 +20,7 @@ class HueDimmerController(LightController):
             "off-hold-release": Light.RELEASE,
         }
 
-    def get_deconz_actions_mapping(self) -> TypeActionsMapping:
+    def get_deconz_actions_mapping(self) -> DefaultActionsMapping:
         return {
             1002: Light.ON,
             1001: Light.HOLD_COLOR_UP,
@@ -41,7 +36,7 @@ class HueDimmerController(LightController):
             4003: Light.RELEASE,
         }
 
-    def get_zha_actions_mapping(self) -> TypeActionsMapping:
+    def get_zha_actions_mapping(self) -> DefaultActionsMapping:
         return {
             "off_long_release": Light.RELEASE,
             "off_hold": Light.HOLD_COLOR_DOWN,
@@ -61,8 +56,26 @@ class HueDimmerController(LightController):
         return data["command"]
 
 
+class Philips929002398602LightController(LightController):
+    def get_z2m_actions_mapping(self) -> DefaultActionsMapping:
+        return {
+            "on_press_release": Light.ON,
+            "on_hold": Light.HOLD_COLOR_UP,
+            "on_hold_release": Light.RELEASE,
+            "up_press_release": Light.CLICK_BRIGHTNESS_UP,
+            "up_hold": Light.HOLD_BRIGHTNESS_UP,
+            "up_hold_release": Light.RELEASE,
+            "down_press_release": Light.CLICK_BRIGHTNESS_DOWN,
+            "down_hold": Light.HOLD_BRIGHTNESS_DOWN,
+            "down_hold_release": Light.RELEASE,
+            "off_press_release": Light.OFF,
+            "off_hold": Light.HOLD_COLOR_DOWN,
+            "off_hold_release": Light.RELEASE,
+        }
+
+
 class Niko91004LightController(LightController):
-    def get_deconz_actions_mapping(self) -> TypeActionsMapping:
+    def get_deconz_actions_mapping(self) -> DefaultActionsMapping:
         return {
             1002: Light.ON,  # button_1_release
             1001: Light.SYNC,  # button_1_hold
@@ -88,4 +101,40 @@ class Niko91004LightController(LightController):
             6001: Light.HOLD_COLOR_DOWN,  # button_2_4_hold
             # 6000: "",  # button_2_4_press
             6003: Light.RELEASE,  # button_2_4_release_after_hold
+        }
+
+
+class HueSmartButtonLightController(LightController):
+    def get_deconz_actions_mapping(self) -> DefaultActionsMapping:
+        return {
+            # 1000: "", # Initial press
+            1001: Light.HOLD_BRIGHTNESS_TOGGLE,
+            1002: Light.TOGGLE,
+            1003: Light.RELEASE,
+        }
+
+
+class Philips929003017102LightController(LightController):
+    def get_z2m_actions_mapping(self) -> DefaultActionsMapping:
+        return {
+            "left_press": Light.TOGGLE,
+            # "left_press_release": "",
+            "left_hold": Light.HOLD_BRIGHTNESS_TOGGLE,
+            "left_hold_release": Light.RELEASE,
+            "right_press": Light.TOGGLE,
+            # "right_press_release": "",
+            "right_hold": Light.HOLD_BRIGHTNESS_TOGGLE,
+            "right_hold_release": Light.RELEASE,
+        }
+
+    def get_deconz_actions_mapping(self) -> DefaultActionsMapping:
+        return {
+            # 1000: "", # Initial press
+            1001: Light.HOLD_BRIGHTNESS_TOGGLE,
+            1002: Light.TOGGLE,
+            1003: Light.RELEASE,
+            # 2000: "", # Initial press
+            2001: Light.HOLD_BRIGHTNESS_TOGGLE,
+            2002: Light.TOGGLE,
+            2003: Light.RELEASE,
         }
