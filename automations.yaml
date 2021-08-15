@@ -70,7 +70,6 @@
   trigger:
   - platform: state
     entity_id: media_player.sony_bravia_tv
-    from: 'on'
     to: 'off'
     for: 00:15:00
   - platform: time
