@@ -23,3 +23,57 @@ restart_light:
       entity_id: "{{ light }}"
   mode: single
   icon: mdi:restart
+flash_light:
+  alias: "Flash light"
+  description: "Flashes a light on and off several times"
+  fields:
+    light_to_flash:
+      name: "Light to flash"
+      description: "The light to flash"
+      required: true
+      selector:
+        entity:
+          domain: light
+    delay_to_use:
+      name: "Delay"
+      description: "Delay between each state change"
+      default: 1
+      required: true
+      selector:
+        number:
+          min: 1
+          max: 10
+          step: 1
+          unit_of_measurement: seconds
+          mode: slider    
+    repetitions:
+      name: "Repetitions"
+      description: "How many times to flash"
+      default: 5
+      required: true
+      selector:
+        number:
+          min: 1
+          max: 100
+          step: 1
+          unit_of_measurement: times
+          mode: slider    
+  variables:
+    light: "{{ light_to_flash }}"
+    delay: "{{ delay_to_use }}"
+    count: "{{ repetitions }}"
+  sequence:
+  - alias: "Turn light on"
+    service: light.turn_on
+    target:
+      entity_id: "{{ light }}"
+  - alias: "Cycle light multiple times"
+    repeat:
+      count: "{{ count|int * 2 - 1 }}"
+      sequence:
+        - delay: "{{ delay }}"
+        - service: light.toggle
+          target:
+            entity_id: "{{ light }}"
+  mode: single
+  icon: mdi:alarm-light
