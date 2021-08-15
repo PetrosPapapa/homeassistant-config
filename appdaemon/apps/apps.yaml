@@ -10,4 +10,9 @@ living_room_controller:
   integration: deconz
   light: light.living_room_lights
 
-
+petros_bedside_controller:
+  module: controllerx
+  class: E1743Controller
+  controller: tradfri_on_off_switch
+  integration: deconz
+  light: light.petros_bedside
