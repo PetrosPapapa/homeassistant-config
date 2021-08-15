@@ -71,10 +71,14 @@ light:
     name: Baby Lights
     entities:
         - light.color_temperature_light_8
-  - platform: switch
+#  - platform: switch
+#    name: Petros Bedside
+#    entity_id:
+#        - switch.on_off_plug_in_unit_5
+  - platform: group
     name: Petros Bedside
-    entity_id:
-        - switch.on_off_plug_in_unit_5
+    entities:
+        - light.dimmable_light_10
   - platform: switch
     name: Foscam Plug
     entity_id:
