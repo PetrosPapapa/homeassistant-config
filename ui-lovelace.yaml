@@ -92,6 +92,14 @@ views:
             show_name: false
             state_color: true
             title: 1+5T
+      - type: button
+        tap_action:
+          action: toggle
+        entity: light.speakers_plug
+        show_state: false
+        show_name: false
+        hold_action:
+          action: none              
   - title: Lights
     path: lights
     panel: true

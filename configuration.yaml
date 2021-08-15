@@ -76,13 +76,13 @@ light:
     entity_id:
         - switch.on_off_plug_in_unit_5
   - platform: switch
-    name: Router Plug
-    entity_id:
-        - switch.on_off_plug_in_unit_6
-  - platform: switch
     name: Foscam Plug
     entity_id:
         - switch.on_off_plug_in_unit_7
+  - platform: switch
+    name: Speakers Plug
+    entity_id:
+        - switch.on_off_plug_in_unit_6
 #  - platform: group
 #    name: Christmas Lights
 #    entities:
@@ -109,6 +109,9 @@ homeassistant:
         light.router_plug:
             friendly_name: "Router Plug"
             icon: mdi:power-socket-uk
+        light.speakers_plug:
+            friendly_name: "Speakers Plug"
+            icon: mdi:speaker
             
 notify:
   - platform: group
