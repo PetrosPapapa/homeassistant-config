@@ -20,8 +20,12 @@ views:
       - type: iframe
         url: !secret grafana_temperatures_url
         aspect_ratio: 100%
-      - entity: weather.home
-        type: weather-forecast
+      - type: vertical-stack
+        cards:
+          - type: weather-forecast
+            entity: !secret weather_entity_3h
+          - type: weather-forecast
+            entity: !secret weather_entity_daily
       - type: vertical-stack
         cards:
           - type: light
