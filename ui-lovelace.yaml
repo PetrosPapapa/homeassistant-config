@@ -64,6 +64,10 @@ views:
             entity: camera.kane_nas_d_link_dcs_932l
             image: 'https://demo.home-assistant.io/stub_config/bedroom.png'
             camera_image: camera.kane_nas_d_link_dcs_932l
+          - type: entities
+            entities:
+              - entity: light.dlink_plug
+                name: Camera plug            
       - type: vertical-stack
         cards:
           - type: glance

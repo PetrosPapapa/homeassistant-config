@@ -71,10 +71,6 @@ light:
     name: Baby Lights
     entities:
         - light.color_temperature_light_8
-#  - platform: switch
-#    name: Petros Bedside
-#    entity_id:
-#        - switch.on_off_plug_in_unit_5
   - platform: group
     name: Petros Bedside
     entities:
@@ -87,6 +83,10 @@ light:
     name: Speakers Plug
     entity_id:
         - switch.on_off_plug_in_unit_6
+  - platform: switch
+    name: DLink Plug
+    entity_id:
+        - switch.on_off_plug_in_unit_5
 #  - platform: group
 #    name: Christmas Lights
 #    entities:
@@ -109,6 +109,9 @@ homeassistant:
             icon: mdi:lamp
         light.foscam_plug:
             friendly_name: "Foscam Plug"
+            icon: mdi:power-socket-uk
+        light.dlink_plug:
+            friendly_name: "DLink Plug"
             icon: mdi:power-socket-uk
         light.router_plug:
             friendly_name: "Router Plug"
