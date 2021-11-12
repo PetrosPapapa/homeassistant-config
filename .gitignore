@@ -5,7 +5,7 @@
 *.txt
 *.xml
 *.conf
-home-assistant.log*
+home-assistant*.log*
 home-assistant_v2.db*
 pyozw.sqlite
 customize.yaml
