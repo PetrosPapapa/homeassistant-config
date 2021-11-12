@@ -19,6 +19,12 @@ scene: !include scenes.yaml
 recorder:
     db_url: !secret recorder_db_url
 
+logger:
+  default: info
+#  logs:
+#    homeassistant.components.synology_dsm: debug
+#    synology_dsm: debug
+
 discovery:
 
 influxdb:
@@ -154,3 +160,32 @@ lovelace:
 #      icon: mdi:home
 #      show_in_sidebar: true
 #      filename: lovelace-home.yaml    
+
+sensor:
+  - platform: sql
+    db_url: !secret home_db
+    scan_interval: 3600
+    queries:
+      - name: "Crypto Asset GBP"
+        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "GBP";'
+        column: "value"
+      - name: "Crypto Asset EUR"
+        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "EUR";'
+        column: "value"
+      - name: "Crypto Asset XBT"
+        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "XBT";'
+        column: "value"
+      - name: "Crypto Asset ETH"
+        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "ETH";'
+        column: "value"
+      - name: "Crypto Asset LTC"
+        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "LTC";'
+        column: "value"
+      - name: "Crypto Asset ADA"
+        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "ADA";'
+        column: "value"
+      - name: "Crypto Asset MINA"
+        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "MINA";'
+        column: "value"
+        
+        
