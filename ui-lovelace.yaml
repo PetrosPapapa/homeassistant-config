@@ -13,6 +13,7 @@ views:
       - entity: sensor.bathroom_temperature
       - entity: sensor.daylight
       - entity: sun.sun
+      - entity: sensor.kane_nas_volume_used
       - entity: binary_sensor.openclose_5
     cards:
       - entity: binary_sensor.openclose_5
@@ -108,6 +109,17 @@ views:
         show_name: false
         hold_action:
           action: none              
+      - type: entities
+        entities:
+          - entity: sensor.archer_c80_ac1900_mu_mimo_wi_fi_router_external_ip
+          - entity: binary_sensor.updater
+          - entity: binary_sensor.kane_nas_update_available
+          - entity: binary_sensor.kane_nas_security_status
+          - entity: sensor.kane_nas_volume_used
+          - entity: sensor.kane_nas_cpu_load_average_15_min
+          - entity: input_datetime.bed_time
+        show_header_toggle: false
+        state_color: true
   - title: Lights
     path: lights
     panel: true
