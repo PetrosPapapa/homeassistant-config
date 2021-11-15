@@ -16,8 +16,13 @@ views:
       - entity: sensor.kane_nas_volume_used
       - entity: binary_sensor.openclose_5
     cards:
-      - entity: binary_sensor.openclose_5
-        type: entity
+      - type: button
+        tap_action:
+          action: more-info
+        entity: binary_sensor.openclose_5
+        show_state: true
+        show_icon: true
+        show_name: true
       - type: iframe
         url: !secret grafana_temperatures_url
         aspect_ratio: 100%
