@@ -101,6 +101,12 @@ homeassistant:
     customize:
         binary_sensor.openclose_5:
             device_class: door
+        media_player.sony_bravia_tv:
+            device_class: tv
+            icon: mdi:television
+        media_player.sonytv:
+            device_class: tv
+            icon: mdi:television
         light.living_room_lights:
             friendly_name: "Living Room Lights"
             icon: mdi:lamps
