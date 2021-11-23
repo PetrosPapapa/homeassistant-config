@@ -45,9 +45,14 @@ views:
       - type: iframe
         url: !secret grafana_batteries_url
         aspect_ratio: 100%
-      - type: iframe
-        url: !secret grafana_watts_url
-        aspect_ratio: 100%
+      - type: vertical-stack
+        cards:
+        - type: iframe
+          url: !secret grafana_power_hour_url
+          aspect_ratio: 100%
+        - type: iframe
+          url: !secret grafana_power_day_url
+          aspect_ratio: 100%
       - type: media-control
         entity: media_player.sonytv
       - type: vertical-stack
