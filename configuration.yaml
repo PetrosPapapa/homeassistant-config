@@ -156,6 +156,10 @@ media_player:
     android: True
     user_labels: True
     name: SonyTV
+  - platform: androidtv
+    name: Sony Android TV
+    host: 192.168.0.153
+    exclude_unnamed_apps: true
     
 lovelace:
   mode: yaml

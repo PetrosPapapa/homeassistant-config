@@ -54,7 +54,7 @@ views:
           url: !secret grafana_power_day_url
           aspect_ratio: 100%
       - type: media-control
-        entity: media_player.sonytv
+        entity: media_player.sony_android_tv
       - type: vertical-stack
         cards:
           - type: picture-entity
