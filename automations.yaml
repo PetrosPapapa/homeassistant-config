@@ -194,3 +194,19 @@
     target:
       entity_id: switch.foscam_night
   mode: single
+- id: '1637097814823'
+  alias: Petros Bedside Toggle
+  description: ''
+  trigger:
+  - device_id: c237e7ca2a6ad748aa9c418cfbf9e1d8
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: toggle
+    device_id: 42856f57ab3527d1f567aeb58bb4257f
+    entity_id: light.dimmable_light_10
+    domain: light
+  mode: single
