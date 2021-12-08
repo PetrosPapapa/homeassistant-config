@@ -82,7 +82,7 @@
     type: is_off
   - condition: time
     after: input_datetime.bed_time
-    before: '12:00'
+    before: 05:00
   action:
   - service: light.turn_off
     data: {}
