@@ -95,10 +95,7 @@ light:
     name: DLink Plug
     entity_id:
         - switch.on_off_plug_in_unit_5
-#  - platform: group
-#    name: Christmas Lights
-#    entities:
-        
+
 homeassistant:
     customize:
         binary_sensor.openclose_5:
@@ -115,7 +112,7 @@ homeassistant:
         light.baby_lights:
             friendly_name: "Baby Lights"
             icon: mdi:human-baby-changing-table
-        light.christmas_lights:
+        group.christmas_lights:
             friendly_name: "Christmas Lights"
             icon: mdi:string-lights
         light.petros_bedside:

@@ -82,12 +82,16 @@
     type: is_off
   - condition: time
     after: input_datetime.bed_time
-    before: '12:00:00'
+    before: '12:00'
   action:
   - service: light.turn_off
-    entity_id: light.living_room_lights
-    data:
-      transition: 5
+    data: {}
+    target:
+      entity_id:
+      - light.living_room_lights
+  - service: homeassistant.turn_off
+    target:
+      entity_id: group.christmas_lights
   mode: single
 - id: '1602538103112'
   alias: Sun RISE
@@ -209,4 +213,19 @@
     device_id: 42856f57ab3527d1f567aeb58bb4257f
     entity_id: light.dimmable_light_10
     domain: light
+  mode: single
+- id: '1638657934419'
+  alias: Christmas Lights Toggle
+  description: ''
+  trigger:
+  - device_id: a0d13cccd33651d0e116d32da0fe9c22
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - service: homeassistant.toggle
+    target:
+      entity_id: group.christmas_lights
   mode: single

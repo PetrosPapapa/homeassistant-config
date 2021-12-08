@@ -34,6 +34,10 @@ views:
             entity: !secret weather_entity_daily
       - type: vertical-stack
         cards:
+          - type: button
+            entity: group.christmas_lights
+            tap_action:
+              action: toggle
           - type: light
             entity: light.living_room_lights
           - type: light
