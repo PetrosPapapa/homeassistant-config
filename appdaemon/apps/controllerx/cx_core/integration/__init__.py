@@ -27,7 +27,7 @@ class Integration(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def listen_changes(self, controller_id: str) -> None:
+    async def listen_changes(self, controller_id: str) -> None:
         raise NotImplementedError
 
 
@@ -46,7 +46,7 @@ def _all_integration_subclasses(
     subclasses = set(cls_.__subclasses__()).union(
         [s for c in cls_.__subclasses__() for s in _all_integration_subclasses(c)]
     )
-    return list(subclasses)  # type: ignore
+    return list(subclasses)
 
 
 def get_integrations(controller, kwargs) -> List[Integration]:

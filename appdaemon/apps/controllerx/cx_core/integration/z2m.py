@@ -1,8 +1,8 @@
 import json
 from typing import Optional
 
-from appdaemon.plugins.hass.hassapi import Hass  # type: ignore
-from appdaemon.plugins.mqtt.mqttapi import Mqtt  # type: ignore
+from appdaemon.plugins.hass.hassapi import Hass
+from appdaemon.plugins.mqtt.mqttapi import Mqtt
 from cx_const import DefaultActionsMapping
 from cx_core.integration import EventData, Integration
 
@@ -16,13 +16,13 @@ class Z2MIntegration(Integration):
     def get_default_actions_mapping(self) -> Optional[DefaultActionsMapping]:
         return self.controller.get_z2m_actions_mapping()
 
-    def listen_changes(self, controller_id: str) -> None:
+    async def listen_changes(self, controller_id: str) -> None:
         listens_to = self.kwargs.get("listen_to", LISTENS_TO_HA)
         if listens_to == LISTENS_TO_HA:
-            Hass.listen_state(self.controller, self.state_callback, controller_id)
+            await Hass.listen_state(self.controller, self.state_callback, controller_id)
         elif listens_to == LISTENS_TO_MQTT:
             topic_prefix = self.kwargs.get("topic_prefix", "zigbee2mqtt")
-            Mqtt.listen_event(
+            await Mqtt.listen_event(
                 self.controller,
                 self.event_callback,
                 topic=f"{topic_prefix}/{controller_id}",
