@@ -2,33 +2,24 @@
   alias: Main Door Notification
   description: ''
   trigger:
-  - device_id: 63b1fe5838054a5888436f1efd7abe24
-    domain: binary_sensor
+  - platform: state
     entity_id: binary_sensor.openclose_5
+    from: 'off'
     for:
       hours: 0
       minutes: 0
       seconds: 3
-    platform: device
-    type: opened
-  - device_id: 63b1fe5838054a5888436f1efd7abe24
-    domain: binary_sensor
-    entity_id: binary_sensor.openclose_5
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 3
-    platform: device
-    type: not_opened
+      milliseconds: 0
   condition: []
   action:
   - data:
       data:
         clickAction: lovelace/default_view
-      message: "{% if is_state('binary_sensor.openclose_5','on') %}\n  [{{ now().strftime(\"\
-        %a %H:%M:%S\") }}] The Main Door has been OPENED\n{% else %}\n  [{{ now().strftime(\"\
-        %a %H:%M:%S\") }}] The Main Door has been closed\n{% endif %}\n"
-      title: Door Sensor Triggered
+      message: "[{{ now().strftime(\"%a %H:%M:%S\") }}] {% if is_state('binary_sensor.openclose_5','on')\
+        \ %}\n  OPENED\n{% elif is_state('binary_sensor.openclose_5', 'off') %}\n\
+        \  CLOSED\n{% else %}\n  {{ states('binary_sensor.openclose_5') }}\n{% endif\
+        \ %}\n"
+      title: Main Door
     service: notify.all_phones
   mode: single
 - id: '1601311824964'
