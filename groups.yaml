@@ -2,4 +2,3 @@ christmas_lights:
   name: Christmas Lights
   entities:
       - switch.on_off_plug_in_unit_5
-      - switch.on_off_plug_in_unit_b2

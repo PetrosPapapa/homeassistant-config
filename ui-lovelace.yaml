@@ -118,14 +118,31 @@ views:
             show_name: false
             state_color: true
             title: 1+5T
-      - type: button
-        tap_action:
-          action: toggle
-        entity: light.speakers_plug
-        show_state: false
-        show_name: false
-        hold_action:
-          action: none              
+      - type: vertical-stack
+        cards:
+        - type: button
+          tap_action:
+            action: toggle
+          entity: light.speakers_plug
+          show_state: false
+          show_name: false
+          hold_action:
+            action: none              
+        - type: button
+          tap_action:
+            action: toggle
+            confirmation:
+              text: Are you sure you want to toggle the router?
+          entity: light.router_plug
+          hold_action:
+            action: call-service
+            service: script.restart_router
+            service_data: {}
+            target: {}
+            confirmation:
+              text: Are you sure you want to restart the router?
+          icon: mdi:router-wireless
+          name: Router          
       - type: entities
         entities:
           - entity: sensor.archer_c80_ac1900_mu_mimo_wi_fi_router_external_ip

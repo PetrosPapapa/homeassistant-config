@@ -94,7 +94,11 @@ light:
   - platform: switch
     name: DLink Plug
     entity_id:
-        - switch.on_off_plug_in_unit_5
+        - switch.on_off_plug_in_unit_b2
+  - platform: switch
+    name: Router Plug
+    entity_id:
+        - switch.on_off_plug_in_unit_b1
 
 homeassistant:
     customize:
