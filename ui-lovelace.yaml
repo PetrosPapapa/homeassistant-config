@@ -3,7 +3,6 @@ views:
   - path: default_view
     title: Home
     badges:
-      - entity: binary_sensor.updater
       - entity: person.petros
       - entity: person.eliza
       - entity: sensor.living_room_temperature
@@ -146,7 +145,7 @@ views:
       - type: entities
         entities:
           - entity: sensor.archer_c80_ac1900_mu_mimo_wi_fi_router_external_ip
-          - entity: binary_sensor.updater
+          - entity: binary_sensor.docker_hub_update_available
           - entity: binary_sensor.kane_nas_update_available
           - entity: binary_sensor.kane_nas_security_status
           - entity: sensor.kane_nas_volume_used
