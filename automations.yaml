@@ -47,11 +47,13 @@
     conditions:
     - condition: time
       before: input_datetime.bed_time
-    - condition: device
-      device_id: c3a2ba4501bb11ebafea19648fe90737
-      domain: media_player
-      entity_id: media_player.sony_bravia_tv
-      type: is_on
+    - condition: not
+      conditions:
+      - condition: device
+        device_id: c3a2ba4501bb11ebafea19648fe90737
+        domain: media_player
+        entity_id: media_player.sony_bravia_tv
+        type: is_off
   action:
   - scene: scene.sun_set_living_room
   mode: single
