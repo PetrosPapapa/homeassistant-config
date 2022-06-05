@@ -15,16 +15,6 @@ views:
       - entity: sensor.kane_nas_volume_used
       - entity: binary_sensor.openclose_5
     cards:
-      - type: button
-        tap_action:
-          action: more-info
-        entity: binary_sensor.openclose_5
-        show_state: true
-        show_icon: true
-        show_name: true
-      - type: iframe
-        url: !secret grafana_temperatures_url
-        aspect_ratio: 100%
       - type: vertical-stack
         cards:
           - type: weather-forecast
@@ -45,17 +35,6 @@ views:
             entity: light.baby_lights
           - type: light
             entity: light.petros_bedside
-      - type: iframe
-        url: !secret grafana_batteries_url
-        aspect_ratio: 100%
-      - type: vertical-stack
-        cards:
-        - type: iframe
-          url: !secret grafana_power_hour_url
-          aspect_ratio: 100%
-        - type: iframe
-          url: !secret grafana_power_day_url
-          aspect_ratio: 100%
       - type: media-control
         entity: media_player.sony_android_tv
       - type: vertical-stack
@@ -85,6 +64,60 @@ views:
             entities:
               - entity: light.dlink_plug
                 name: Camera plug            
+      - type: vertical-stack
+        cards:
+        - type: button
+          tap_action:
+            action: toggle
+          entity: light.speakers_plug
+          show_state: false
+          show_name: false
+          hold_action:
+            action: none              
+        - type: button
+          tap_action:
+            action: toggle
+            confirmation:
+              text: Are you sure you want to toggle the router?
+          entity: light.router_plug
+          hold_action:
+            action: call-service
+            service: script.restart_router
+            service_data: {}
+            target: {}
+            confirmation:
+              text: Are you sure you want to restart the router?
+          icon: mdi:router-wireless
+          name: Router          
+  - path: monitor
+    title: Monitor
+    badges:
+      - entity: person.petros
+      - entity: person.eliza
+      - entity: sensor.living_room_temperature
+      - entity: sensor.main_bedroom_temperature
+      - entity: sensor.vasiliki_bedroom_temperature
+      - entity: sensor.kitchen_temperature
+      - entity: sensor.bathroom_temperature
+      - entity: sensor.daylight
+      - entity: sun.sun
+      - entity: sensor.kane_nas_volume_used
+      - entity: binary_sensor.openclose_5
+    cards:
+      - type: iframe
+        url: !secret grafana_temperatures_url
+        aspect_ratio: 100%
+      - type: iframe
+        url: !secret grafana_batteries_url
+        aspect_ratio: 100%
+      - type: vertical-stack
+        cards:
+        - type: iframe
+          url: !secret grafana_power_hour_url
+          aspect_ratio: 100%
+        - type: iframe
+          url: !secret grafana_power_day_url
+          aspect_ratio: 100%
       - type: vertical-stack
         cards:
           - type: glance
@@ -117,31 +150,6 @@ views:
             show_name: false
             state_color: true
             title: 1+5T
-      - type: vertical-stack
-        cards:
-        - type: button
-          tap_action:
-            action: toggle
-          entity: light.speakers_plug
-          show_state: false
-          show_name: false
-          hold_action:
-            action: none              
-        - type: button
-          tap_action:
-            action: toggle
-            confirmation:
-              text: Are you sure you want to toggle the router?
-          entity: light.router_plug
-          hold_action:
-            action: call-service
-            service: script.restart_router
-            service_data: {}
-            target: {}
-            confirmation:
-              text: Are you sure you want to restart the router?
-          icon: mdi:router-wireless
-          name: Router          
       - type: entities
         entities:
           - entity: sensor.archer_c80_ac1900_mu_mimo_wi_fi_router_external_ip
