@@ -4,25 +4,27 @@
     light.kitchen_lights:
       min_mireds: 140
       max_mireds: 650
-      brightness: 254
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 140
       color_temp: 450
+      hs_color:
+      - 29.719
+      - 83.657
+      rgb_color:
+      - 255
+      - 147
+      - 41
+      xy_color:
+      - 0.577
+      - 0.388
       entity_id:
       - light.color_temperature_light_3
-      friendly_name: Kitchen Lights
       icon: mdi:lightbulb-group
-      supported_features: 43
+      friendly_name: Kitchen Lights
+      supported_features: 40
       state: 'on'
-    light.baby_lights:
-      min_mireds: 140
-      max_mireds: 650
-      brightness: 128
-      color_temp: 502
-      entity_id:
-      - light.color_temperature_light_8
-      friendly_name: Baby Lights
-      icon: mdi:human-baby-changing-table
-      supported_features: 43
-      state: 'on'      
   icon: mdi:weather-sunset-down
 - id: '1608413152848'
   name: Sun SET Living Room
@@ -39,20 +41,33 @@
       icon: mdi:lamps
       supported_features: 43
       state: 'on'
-  icon: mdi:weather-sunset-down  
+  icon: mdi:weather-sunset-down
 - id: '1608413152749'
   name: Baby Sleep Time
   entities:
     light.baby_lights:
       min_mireds: 140
       max_mireds: 650
-      brightness: 128
-      color_temp: 502
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 84
+      color_temp: 454
+      hs_color:
+      - 29.79
+      - 84.553
+      rgb_color:
+      - 255
+      - 146
+      - 39
+      xy_color:
+      - 0.579
+      - 0.388
       entity_id:
       - light.color_temperature_light_8
-      friendly_name: Baby Lights
       icon: mdi:human-baby-changing-table
-      supported_features: 43
+      friendly_name: Baby Lights
+      supported_features: 40
       state: 'on'
   icon: mdi:chat-sleep
 - id: '1608413152758'
@@ -85,7 +100,7 @@
       friendly_name: Baby Lights
       icon: mdi:human-baby-changing-table
       supported_features: 43
-      state: 'off'      
+      state: 'off'
   icon: mdi:weather-sunset-up
 - id: '1608413152759'
   name: Baby Awake
