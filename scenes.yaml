@@ -115,3 +115,81 @@
       supported_features: 43
       state: 'off'
   icon: mdi:baby-bottle
+- id: '1656288581471'
+  name: Living room after bball
+  entities:
+    light.dimmable_light_2:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 89
+      is_deconz_group: false
+      icon: mdi:floor-lamp
+      friendly_name: IKEA Black Light
+      supported_features: 40
+      state: 'on'
+    light.color_temperature_light_4:
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 191
+      color_temp: 452
+      hs_color:
+      - 29.754
+      - 84.103
+      rgb_color:
+      - 255
+      - 146
+      - 40
+      xy_color:
+      - 0.579
+      - 0.387
+      is_deconz_group: false
+      icon: mdi:lamp
+      friendly_name: Bed Lamp 01
+      supported_features: 40
+      state: 'on'
+    light.dimmable_light_9:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 227
+      is_deconz_group: false
+      icon: mdi:floor-lamp
+      friendly_name: IKEA White Light
+      supported_features: 40
+      state: 'on'
+    light.color_temperature_light_3:
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 254
+      color_temp: 450
+      hs_color:
+      - 29.719
+      - 83.657
+      rgb_color:
+      - 255
+      - 147
+      - 41
+      xy_color:
+      - 0.577
+      - 0.388
+      is_deconz_group: false
+      friendly_name: IKEA White Flower Lamp
+      supported_features: 40
+      state: 'on'
+  icon: mdi:basketball
+  metadata:
+    light.dimmable_light_2:
+      entity_only: true
+    light.color_temperature_light_3:
+      entity_only: true
+    light.color_temperature_light_4:
+      entity_only: true
+    light.dimmable_light_9:
+      entity_only: true
