@@ -159,6 +159,7 @@ views:
           - entity: sensor.kane_nas_volume_used
           - entity: sensor.kane_nas_cpu_load_average_15_min
           - entity: input_datetime.bed_time
+          - entity: input_datetime.child_bedtime
         show_header_toggle: false
         state_color: true
   - title: Lights
