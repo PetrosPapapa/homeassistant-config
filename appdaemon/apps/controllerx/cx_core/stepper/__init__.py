@@ -1,7 +1,7 @@
 import abc
+from dataclasses import dataclass
 from typing import Optional
 
-from attr import dataclass
 from cx_const import Number, StepperDir
 
 
@@ -54,7 +54,7 @@ class StepperOutput:
 class Stepper(abc.ABC):
     sign_mapping = {StepperDir.UP: 1, StepperDir.DOWN: -1}
 
-    previous_direction: str = StepperDir.DOWN
+    previous_direction: str
     min_max: MinMax
     steps: Number
 
@@ -66,9 +66,16 @@ class Stepper(abc.ABC):
     def sign(direction: str) -> int:
         return Stepper.sign_mapping[direction]
 
-    def __init__(self, min_max: MinMax, steps: Number) -> None:
+    @staticmethod
+    def apply_sign(value: Number, direction: str) -> Number:
+        return Stepper.sign(direction) * value
+
+    def __init__(
+        self, min_max: MinMax, steps: Number, previous_direction: str = StepperDir.DOWN
+    ) -> None:
         self.min_max = min_max
         self.steps = steps
+        self.previous_direction = previous_direction
 
     def get_direction(self, value: Number, direction: str) -> str:
         if direction == StepperDir.TOGGLE:
@@ -85,3 +92,8 @@ class Stepper(abc.ABC):
         None, the loop will stop executing.
         """
         raise NotImplementedError
+
+
+class InvertStepper(Stepper):
+    def step(self, value: Number, direction: str) -> StepperOutput:
+        return StepperOutput(self.apply_sign(value, direction), next_direction=None)
