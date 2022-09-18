@@ -6,8 +6,13 @@
       max_mireds: 650
       supported_color_modes:
       - color_temp
+      entity_id:
+      - light.color_temperature_light_3
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen Lights
+      supported_features: 40
       color_mode: color_temp
-      brightness: 140
+      brightness: 153
       color_temp: 450
       hs_color:
       - 29.719
@@ -19,13 +24,9 @@
       xy_color:
       - 0.577
       - 0.388
-      entity_id:
-      - light.color_temperature_light_3
-      icon: mdi:lightbulb-group
-      friendly_name: Kitchen Lights
-      supported_features: 40
       state: 'on'
   icon: mdi:weather-sunset-down
+  metadata: {}
 - id: '1608413152848'
   name: Sun SET Living Room
   entities:
@@ -192,4 +193,61 @@
     light.color_temperature_light_4:
       entity_only: true
     light.dimmable_light_9:
+      entity_only: true
+- id: '1663515151211'
+  name: Bedtime
+  entities:
+    light.baby_lights:
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      entity_id:
+      - light.color_temperature_light_8
+      icon: mdi:human-baby-changing-table
+      friendly_name: Baby Lights
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 51
+      color_temp: 454
+      hs_color:
+      - 29.79
+      - 84.553
+      rgb_color:
+      - 255
+      - 146
+      - 39
+      xy_color:
+      - 0.579
+      - 0.388
+      state: 'on'
+    light.kitchen_lights:
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      entity_id:
+      - light.color_temperature_light_3
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen Lights
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 76
+      color_temp: 450
+      hs_color:
+      - 29.719
+      - 83.657
+      rgb_color:
+      - 255
+      - 147
+      - 41
+      xy_color:
+      - 0.577
+      - 0.388
+      state: 'on'
+  icon: mdi:bed
+  metadata:
+    light.baby_lights:
+      entity_only: true
+    light.kitchen_lights:
       entity_only: true
