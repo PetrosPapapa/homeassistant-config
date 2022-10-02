@@ -177,31 +177,31 @@ lovelace:
 #      filename: lovelace-home.yaml    
 
 sensor:
-  - platform: sql
-    db_url: !secret home_db
-    scan_interval: 3600
-    queries:
-      - name: "Crypto Asset GBP"
-        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "GBP";'
-        column: "value"
-      - name: "Crypto Asset EUR"
-        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "EUR";'
-        column: "value"
-      - name: "Crypto Asset XBT"
-        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "XBT";'
-        column: "value"
-      - name: "Crypto Asset ETH"
-        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "ETH";'
-        column: "value"
-      - name: "Crypto Asset LTC"
-        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "LTC";'
-        column: "value"
-      - name: "Crypto Asset ADA"
-        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "ADA";'
-        column: "value"
-      - name: "Crypto Asset MINA"
-        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "MINA";'
-        column: "value"
+#  - platform: sql
+#    db_url: !secret home_db
+#    scan_interval: 3600
+#    queries:
+#      - name: "Crypto Asset GBP"
+#        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "GBP";'
+#        column: "value"
+#      - name: "Crypto Asset EUR"
+#        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "EUR";'
+#        column: "value"
+#      - name: "Crypto Asset XBT"
+#        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "XBT";'
+#        column: "value"
+#      - name: "Crypto Asset ETH"
+#        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "ETH";'
+#        column: "value"
+#      - name: "Crypto Asset LTC"
+#        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "LTC";'
+#        column: "value"
+#      - name: "Crypto Asset ADA"
+#        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "ADA";'
+#        column: "value"
+#      - name: "Crypto Asset MINA"
+#        query: 'SELECT SUM(`value`) AS value, `currency` FROM `crypto` WHERE `currency` = "MINA";'
+#        column: "value"
   - platform: history_stats
     name: TV_daily_view_time
     entity_id: media_player.sony_android_tv
