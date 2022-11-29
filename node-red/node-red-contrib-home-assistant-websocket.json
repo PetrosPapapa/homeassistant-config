@@ -1,1 +1,19 @@
-{}
+{
+  "nodes": {
+    "385969260450f310": {
+      "isEnabled": true
+    },
+    "8c9d9e0435d38916": {
+      "isEnabled": true
+    },
+    "6ba6a129a46484a1": {
+      "isEnabled": true
+    },
+    "e91d6452776ef937": {
+      "isEnabled": true
+    },
+    "3d708977ac55a84a": {
+      "isEnabled": true
+    }
+  }
+}
