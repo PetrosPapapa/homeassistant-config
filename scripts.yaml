@@ -87,7 +87,7 @@ restart_router:
   - delay:
       hours: 0
       minutes: 0
-      seconds: 15
+      seconds: 30
       milliseconds: 0
   - service: light.turn_on
     data: {}
