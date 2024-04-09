@@ -29,7 +29,7 @@ logger:
 #    homeassistant.components.synology_dsm: debug
 #    synology_dsm: debug
 
-discovery:
+#discovery:
 
 influxdb:
   host: a0d7b954-influxdb
@@ -86,17 +86,9 @@ light:
     entities:
         - light.dimmable_light_10
   - platform: switch
-    name: Foscam Plug
-    entity_id:
-        - switch.on_off_plug_in_unit_7
-  - platform: switch
     name: Speakers Plug
     entity_id:
         - switch.on_off_plug_in_unit_6
-  - platform: switch
-    name: DLink Plug
-    entity_id:
-        - switch.on_off_plug_in_unit_b2
   - platform: switch
     name: Router Plug
     entity_id:
@@ -124,12 +116,6 @@ homeassistant:
         light.petros_bedside:
             friendly_name: "Petros Bedside Lamp"
             icon: mdi:lamp
-        light.foscam_plug:
-            friendly_name: "Foscam Plug"
-            icon: mdi:power-socket-uk
-        light.dlink_plug:
-            friendly_name: "DLink Plug"
-            icon: mdi:power-socket-uk
         light.router_plug:
             friendly_name: "Router Plug"
             icon: mdi:power-socket-uk
@@ -161,10 +147,10 @@ media_player:
     android: True
     user_labels: True
     name: SonyTV
-  - platform: androidtv
-    name: Sony Android TV
-    host: 192.168.0.153
-    exclude_unnamed_apps: true
+#  - platform: androidtv
+#    name: Sony Android TV
+#    host: 192.168.0.153
+#    exclude_unnamed_apps: true
     
 lovelace:
   mode: yaml
