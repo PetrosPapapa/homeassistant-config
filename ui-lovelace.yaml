@@ -18,9 +18,19 @@ views:
       - type: vertical-stack
         cards:
           - type: weather-forecast
-            entity: !secret weather_entity_3h
-          - type: weather-forecast
+            show_current: true
+            show_forecast: true
             entity: !secret weather_entity_daily
+            forecast_type: hourly
+            secondary_info_attribute: humidity
+            name: Home Weather
+          - type: weather-forecast
+            show_current: false
+            show_forecast: true
+            entity: !secret weather_entity_daily
+            forecast_type: daily
+            secondary_info_attribute: humidity
+            name: Home Weather
       - type: vertical-stack
         cards:
           - type: button
@@ -162,6 +172,9 @@ views:
           - entity: input_datetime.child_bedtime
         show_header_toggle: false
         state_color: true
+      - type: logbook
+        entities:
+        - binary_sensor.openclose_5
   - title: Lights
     path: lights
     panel: true
