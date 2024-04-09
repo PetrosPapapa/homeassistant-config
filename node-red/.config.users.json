@@ -13,11 +13,12 @@
                 "view-store-zoom": false
             },
             "tours": {
-                "welcome": "3.0.1"
+                "welcome": "3.1.0"
             }
         },
         "menu-deploymenu-item-flow": true,
         "menu-deploymenu-item-full": false,
-        "menu-menu-item-sidebar": false
+        "menu-menu-item-sidebar": false,
+        "menu-menu-item-palette": false
     }
 }
