@@ -2,12 +2,20 @@
   name: Sun SET
   entities:
     light.kitchen_lights:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
       min_mireds: 140
       max_mireds: 650
       supported_color_modes:
       - color_temp
+      entity_id:
+      - light.color_temperature_light_3
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen Lights
+      supported_features: 40
       color_mode: color_temp
-      brightness: 168
+      brightness: 254
+      color_temp_kelvin: 2222
       color_temp: 450
       hs_color:
       - 29.719
@@ -19,11 +27,6 @@
       xy_color:
       - 0.577
       - 0.388
-      entity_id:
-      - light.color_temperature_light_3
-      icon: mdi:lightbulb-group
-      friendly_name: Kitchen Lights
-      supported_features: 40
       state: 'on'
   icon: mdi:weather-sunset-down
   metadata: {}
@@ -31,33 +34,60 @@
   name: Sun SET Living Room
   entities:
     light.living_room_lights:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
       min_mireds: 140
       max_mireds: 650
-      brightness: 178
-      color_temp: 452
+      supported_color_modes:
+      - brightness
+      - color_temp
       entity_id:
       - light.dimmable_light_2
       - light.color_temperature_light_4
-      friendly_name: Living Room Lights
+      - light.dimmable_light_9
       icon: mdi:lamps
-      supported_features: 43
+      friendly_name: Living Room Lights
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 178
+      color_temp_kelvin: 2212
+      color_temp: 452
+      hs_color:
+      - 29.754
+      - 84.103
+      rgb_color:
+      - 255
+      - 146
+      - 40
+      xy_color:
+      - 0.579
+      - 0.387
+      state: 'on'
+    group.christmas_lights:
+      entity_id:
+      - switch.on_off_plug_in_unit_5
+      - switch.on_off_plug_in_unit_b2
+      order: 0
+      friendly_name: Christmas Lights
+      icon: mdi:string-lights
       state: 'on'
   icon: mdi:weather-sunset-down
+  metadata:
+    group.christmas_lights:
+      entity_only: true
 - id: '1608413152749'
   name: Baby Sleep Time
   entities:
     light.baby_lights:
-      min_mireds: 140
-      max_mireds: 650
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
       supported_color_modes:
       - color_temp
-      entity_id:
-      - light.color_temperature_light_8
-      icon: mdi:human-baby-changing-table
-      friendly_name: Baby Lights
-      supported_features: 40
       color_mode: color_temp
-      brightness: 166
+      brightness: 191
+      color_temp_kelvin: 2202
       color_temp: 454
       hs_color:
       - 29.79
@@ -69,6 +99,11 @@
       xy_color:
       - 0.579
       - 0.388
+      entity_id:
+      - light.color_temperature_light_8
+      icon: mdi:human-baby-changing-table
+      friendly_name: Baby Lights
+      supported_features: 40
       state: 'on'
   icon: mdi:chat-sleep
   metadata: {}
@@ -199,17 +234,15 @@
   name: Bedtime
   entities:
     light.baby_lights:
-      min_mireds: 140
-      max_mireds: 650
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
       supported_color_modes:
       - color_temp
-      entity_id:
-      - light.color_temperature_light_8
-      icon: mdi:human-baby-changing-table
-      friendly_name: Baby Lights
-      supported_features: 40
       color_mode: color_temp
-      brightness: 51
+      brightness: 102
+      color_temp_kelvin: 2202
       color_temp: 454
       hs_color:
       - 29.79
@@ -221,19 +254,22 @@
       xy_color:
       - 0.579
       - 0.388
+      entity_id:
+      - light.color_temperature_light_8
+      icon: mdi:human-baby-changing-table
+      friendly_name: Baby Lights
+      supported_features: 40
       state: 'on'
     light.kitchen_lights:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
       min_mireds: 140
       max_mireds: 650
       supported_color_modes:
       - color_temp
-      entity_id:
-      - light.color_temperature_light_3
-      icon: mdi:lightbulb-group
-      friendly_name: Kitchen Lights
-      supported_features: 40
       color_mode: color_temp
-      brightness: 76
+      brightness: 140
+      color_temp_kelvin: 2222
       color_temp: 450
       hs_color:
       - 29.719
@@ -245,10 +281,70 @@
       xy_color:
       - 0.577
       - 0.388
+      entity_id:
+      - light.color_temperature_light_3
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen Lights
+      supported_features: 40
       state: 'on'
   icon: mdi:bed
   metadata:
     light.baby_lights:
       entity_only: true
     light.kitchen_lights:
+      entity_only: true
+- id: '1703966897116'
+  name: Baby living room
+  entities:
+    light.dimmable_light_2:
+      supported_color_modes:
+      - brightness
+      is_deconz_group: false
+      icon: mdi:floor-lamp
+      friendly_name: IKEA Black Light
+      supported_features: 40
+      state: 'off'
+    light.dimmable_light_9:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 76
+      is_deconz_group: false
+      icon: mdi:floor-lamp
+      friendly_name: IKEA White Light
+      supported_features: 40
+      state: 'on'
+    light.color_temperature_light_4:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 102
+      color_temp_kelvin: 2212
+      color_temp: 452
+      hs_color:
+      - 29.754
+      - 84.103
+      rgb_color:
+      - 255
+      - 146
+      - 40
+      xy_color:
+      - 0.579
+      - 0.387
+      is_deconz_group: false
+      icon: mdi:lamp
+      friendly_name: Bed Lamp 01
+      supported_features: 40
+      state: 'on'
+  icon: mdi:cradle
+  metadata:
+    light.dimmable_light_2:
+      entity_only: true
+    light.dimmable_light_9:
+      entity_only: true
+    light.color_temperature_light_4:
       entity_only: true
